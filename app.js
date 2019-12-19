@@ -67,4 +67,29 @@ const makeMove = () => {
         }
     })
 }
+
 makeMove();
+
+const socket = new WebSocket('ws://echo.websocket.org');
+
+socket.onopen = function (event) {
+    console.log('Connected to: ' + event.currentTarget.url);
+};
+
+// Handle any errors that occur.
+socket.onerror = function (error) {
+    console.log('WebSocket Error: ' + error);
+};
+
+const socketBtn = document.getElementById('socketBtn');
+socketBtn.onclick = () => {
+    socket.send('Message sent with WebSockets');
+}
+
+socket.onmessage = function (event) {
+    const response = event.data;
+    console.log(event)
+    message.innerText = response;
+};
+
+// socket.close();
