@@ -70,26 +70,40 @@ const makeMove = () => {
 
 makeMove();
 
-const socket = new WebSocket('wss://echo.websocket.org');
+// const socket = new WebSocket('wss://localhost/dev/games/tic-tac-toe/');
 
-socket.onopen = function (event) {
-    console.log('Connected to: ' + event.currentTarget.url);
-};
+// socket.onopen = function (event) {
+//     console.log('Connected to: ' + event.currentTarget.url);
+// };
 
-// Handle any errors that occur.
-socket.onerror = function (error) {
-    console.log('WebSocket Error: ' + error);
-};
+// // Handle any errors that occur.
+// socket.onerror = function (error) {
+//     console.log('WebSocket Error: ' + error);
+// };
 
-const socketBtn = document.getElementById('socketBtn');
-socketBtn.onclick = () => {
-    socket.send('Message sent with WebSockets');
-}
+// const socketBtn = document.getElementById('socketBtn');
+// socketBtn.onclick = () => {
+//     socket.send('Message sent with WebSockets');
+// }
 
-socket.onmessage = function (event) {
-    const response = event.data;
-    console.log(event)
-    message.innerText = response;
-};
+// socket.onmessage = function (event) {
+//     const response = event.data;
+//     console.log(event)
+//     message.innerText = response;
+// };
 
 // socket.close();
+const url = 'wss://websocketest.herokuapp.com'
+const connection = new WebSocket(url)
+
+connection.onopen = () => {
+    connection.send('hey')
+}
+
+connection.onerror = (error) => {
+    console.log(`WebSocket error: ${error}`)
+}
+
+connection.onmessage = (e) => {
+    console.log(e.data)
+}
