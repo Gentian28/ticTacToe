@@ -70,7 +70,7 @@ const makeMove = () => {
 
 makeMove();
 
-const socket = new WebSocket('ws://echo.websocket.org');
+const socket = new WebSocket('wss://echo.websocket.org');
 
 socket.onopen = function (event) {
     console.log('Connected to: ' + event.currentTarget.url);
