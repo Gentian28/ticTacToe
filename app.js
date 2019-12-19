@@ -47,63 +47,54 @@ const checkWinner = (turn) => {
     }
 }
 
+var socket = io.connect('https://tictactoews.herokuapp.com:4001');
+
 const makeMove = () => {
     getTicTacToe.forEach((cell, index) => {
         cell.onclick = () => {
-            if (turn === 0) {
-                cell.innerText = 'X';
-                moves[index] = 'X';
-            } else {
-                cell.innerText = 'O'
-                moves[index] = 'O';
-            }
-            console.log(moves);
-            checkWinner(turn);
-            if (!turn) {
-                turn = 1;
-            } else {
-                turn = 0;
-            }
+            socket.emit('move', index);
+            // if (turn === 0) {
+            //     cell.innerText = 'X';
+            //     moves[index] = 'X';
+            // } else {
+            //     cell.innerText = 'O'
+            //     moves[index] = 'O';
+            // }
+            // console.log(moves);
+            // checkWinner(turn);
+            // if (!turn) {
+            //     turn = 1;
+            // } else {
+            //     turn = 0;
+            // }
         }
     })
 }
 
 makeMove();
 
-// const socket = new WebSocket('wss://localhost/dev/games/tic-tac-toe/');
+socketBtn.onclick = () => {
+    socket.emit('sending message', 'Message sent');
+};
 
-// socket.onopen = function (event) {
-//     console.log('Connected to: ' + event.currentTarget.url);
-// };
+socket.on('new message', function (data) {
+    console.log(data);
+});
 
-// // Handle any errors that occur.
-// socket.onerror = function (error) {
-//     console.log('WebSocket Error: ' + error);
-// };
-
-// const socketBtn = document.getElementById('socketBtn');
-// socketBtn.onclick = () => {
-//     socket.send('Message sent with WebSockets');
-// }
-
-// socket.onmessage = function (event) {
-//     const response = event.data;
-//     console.log(event)
-//     message.innerText = response;
-// };
-
-// socket.close();
-const url = 'wss://websocketest.herokuapp.com'
-const connection = new WebSocket(url)
-
-connection.onopen = () => {
-    connection.send('hey')
-}
-
-connection.onerror = (error) => {
-    console.log(`WebSocket error: ${error}`)
-}
-
-connection.onmessage = (e) => {
-    console.log(e.data)
-}
+socket.on('move made', function (data) {
+    console.log(data)
+    if (turn === 0) {
+        getTicTacToe[data.index].innerText = 'X';
+        moves[data.index] = 'X';
+    } else {
+        getTicTacToe[data.index].innerText = 'O'
+        moves[data.index] = 'O';
+    }
+    console.log(moves);
+    checkWinner(turn);
+    if (!turn) {
+        turn = 1;
+    } else {
+        turn = 0;
+    }
+})
