@@ -32,19 +32,19 @@ p {
 #game-container {
     position: relative;
 }
-#tic-tac-toe-field {
+#ticTacToeField {
     border-collapse: collapse;
     font-size: 40px;
     transition: transform 1s;
     transform: scale(1);
 }
-#tic-tac-toe-field tr td:not(:last-child) {
+#ticTacToeField tr td:not(:last-child) {
     border-right: 6px solid #0DA192;
 }
-#tic-tac-toe-field tr:not(:last-child) td {
+#ticTacToeField tr:not(:last-child) td {
     border-bottom: 6px solid #0DA192;
 }
-#tic-tac-toe-field td {
+#ticTacToeField td {
     text-align: center;
     width: 100px;
     height: 100px;
@@ -160,4 +160,19 @@ p {
     left: none;
     -webkit-transform: none;
     transform: none;
+}
+#reset {
+    display: none;
+}
+
+#restartGame {
+    background: #ffffff;
+    border: 1px solid #ffffff;
+    color: #14bdac;
+    text-transform: uppercase;
+    font-size: 18px;
+    padding: 7px 17px;
+    border-radius: 3px;
+    box-shadow: 0 1px 6px 0 rgba(32, 33, 36, .28);
+    cursor: pointer;
 }

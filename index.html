@@ -9,17 +9,18 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
-    <script defer src="app.js"></script>
+    <script defer src="app.js" type="module"></script>
 </head>
 
 <body>
     <main id="main">
         <section id="game-container">
-            <table id="tic-tac-toe-field"></table>
+            <table id="ticTacToeField"></table>
 
             <!-- <div class="line" id="line-0-1-2"></div> -->
         </section>
         <div id="message"></div>
+        <button id="reset">reset</button>
     </main>
 </body>
 
