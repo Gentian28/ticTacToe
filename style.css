@@ -20,17 +20,88 @@ h1, h2, h3, h4, h5, h6 {
 p {
     margin: 0;
 }
+
+#main {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column;
+    background-color: #14bdac;
+}
 #tic-tac-toe-field {
     border-collapse: collapse;
-}
-#tic-tac-toe-field tr:not(:last-child) td {
-    border-bottom: 2px solid red;
+    font-size: 40px;
 }
 #tic-tac-toe-field tr td:not(:last-child) {
-    border-right: 2px solid red;
+    border-right: 6px solid #0DA192;
+}
+#tic-tac-toe-field tr:not(:last-child) td {
+    border-bottom: 6px solid #0DA192;
 }
 #tic-tac-toe-field td {
     text-align: center;
-    width: 30px;
-    height: 30px;
+    width: 100px;
+    height: 100px;
+    position: relative;
+}
+
+.x-symbol {
+    width: 60px;
+    height: 60px;
+    margin: auto;
+    position: relative;
+}
+.x-symbol > * {
+    width: 6px;
+    background: #545454;
+    border-radius: 50px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+.x-symbol .left {
+    transform: translate(-50%, -50%) rotate(-45deg);
+    animation-name: height;
+    animation-duration: .15s;
+    animation-timing-function: ease-in;
+    animation-fill-mode: forwards;
+    /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+}
+.x-symbol .right {
+    transform: translate(-50%, -50%) rotate(45deg);
+    animation-name: height;
+    animation-duration: .15s;
+    animation-delay: .1s;
+    animation-timing-function: ease-in;
+    animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes height {
+    from {height: 0;}
+    to {height: 100%;}
+}
+@keyframes height {
+    from {height: 0;}
+    to {height: 100%;}
+}
+.circle-symbol {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.path {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: dash 2s linear alternate forwards;
+}
+  
+@keyframes dash {
+    from {
+        stroke-dashoffset: 1000;
+    }
+    to {
+        stroke-dashoffset: 0;
+    }
 }

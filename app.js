@@ -1,7 +1,23 @@
 const ticTacToeField = document.getElementById('tic-tac-toe-field');
 const message = document.getElementById('message');
-
+class TicTacToe {
+    moves = [null, null, null, null, null, null, null, null, null];
+    turn = 0;
+    static generateTicTacToe() {
+        const tbody = document.createElement('tbody');
+        for (let i = 0; i < 3; i++) {
+            const tr = document.createElement('tr');
+            for (let j = 0; j < 3; j++) {
+                const td = document.createElement('td');
+                tr.appendChild(td);
+            }
+            tbody.appendChild(tr);
+        }
+        return tbody;
+    }
+}
 let moves = [null, null, null, null, null, null, null, null, null];
+
 function generateTicTacToe() {
     const tbody = document.createElement('tbody');
     for (let i = 0; i < 3; i++) {
@@ -14,6 +30,7 @@ function generateTicTacToe() {
     }
     return tbody;
 }
+
 ticTacToeField.appendChild(generateTicTacToe());
 console.log(moves)
 let turn = 0;
@@ -47,36 +64,22 @@ const checkWinner = (turn) => {
     }
 }
 
-// var socket = io.connect('http://localhost:4001/');
-var socket = io.connect('https://tictactoews.herokuapp.com:443/');
+var socket = io.connect('http://localhost:4001/');
+// var socket = io.connect('https://tictactoews.herokuapp.com:443/');
 
 const makeMove = () => {
     getTicTacToe.forEach((cell, index) => {
         cell.onclick = () => {
             socket.emit('move', index);
-            // if (turn === 0) {
-            //     cell.innerText = 'X';
-            //     moves[index] = 'X';
-            // } else {
-            //     cell.innerText = 'O'
-            //     moves[index] = 'O';
-            // }
-            // console.log(moves);
-            // checkWinner(turn);
-            // if (!turn) {
-            //     turn = 1;
-            // } else {
-            //     turn = 0;
-            // }
         }
     })
 }
 
 makeMove();
 
-socketBtn.onclick = () => {
-    socket.emit('sending message', 'Message sent');
-};
+// socketBtn.onclick = () => {
+//     socket.emit('sending message', 'Message sent');
+// };
 
 socket.on('new message', function (data) {
     console.log(data);
@@ -85,10 +88,18 @@ socket.on('new message', function (data) {
 socket.on('move made', function (data) {
     console.log(data)
     if (turn === 0) {
-        getTicTacToe[data.index].innerText = 'X';
+        getTicTacToe[data.index].innerHTML = `
+        <div class="x-symbol">
+            <div class="left"></div>
+            <div class="right"></div>
+        </div>`;
         moves[data.index] = 'X';
     } else {
-        getTicTacToe[data.index].innerText = 'O'
+        getTicTacToe[data.index].innerHTML = `
+        <svg class="circle-symbol" width="50px" height="50px">
+        <circle class="path" stroke="#F2EBD3" stroke-width="6" stroke-miterlimit="10" cx="25" cy="25" r="22"
+            stroke="#F2EBD3" fill="transparent" />
+        </svg>`;
         moves[data.index] = 'O';
     }
     console.log(moves);
