@@ -23,7 +23,36 @@ let turn = 0;
 const getTicTacToe = document.querySelectorAll('#tic-tac-toe-field td');
 console.log(getTicTacToe);
 
+const playerOneTemplate = `
+<div class="x-symbol">
+    <div class="left"></div>
+    <div class="right"></div>
+</div>`;
+
+const playerTwoTemplate = `
+<svg class="circle-symbol" width="50px" height="50px">
+<circle class="path" stroke="#F2EBD3" stroke-width="6" stroke-miterlimit="10" cx="25" cy="25" r="22"
+    stroke="#F2EBD3" fill="transparent" />
+</svg>`;
+
+const winnerXTemplate = `
+    <div id="winner">
+        ${playerOneTemplate}
+        <div>winner!</div>
+    </div>
+`;
+
+const winnerOTemplate = `
+    <div id="winner">
+        ${playerTwoTemplate}
+        <div>winner!</div>
+    </div>
+`;
+
 const checkWinner = (turn) => {
+    // if (moves[0] === 'X' && moves[1] === 'X' && moves[2] === 'X') {
+    //     document.getElementById('line-0-1-2').style.width = '100%';
+    // }
     if (
         (
             moves[0] === 'X' && moves[1] === 'X' && moves[2] === 'X' ||
@@ -45,7 +74,8 @@ const checkWinner = (turn) => {
             moves[2] === 'O' && moves[4] === 'O' && moves[6] === 'O'
         )
     ) {
-        message.innerText = `Player ${Number(turn + 1)} wins!`;
+        message.innerHTML = turn ? winnerOTemplate : winnerXTemplate;
+        ticTacToeField.style.transform = 'scale(0)';
     }
 }
 
@@ -55,16 +85,14 @@ var socket = io.connect('https://tictactoews.herokuapp.com:443/');
 const makeMove = () => {
     getTicTacToe.forEach((cell, index) => {
         cell.onclick = () => {
-            socket.emit('move', index);
+            if (!cell.hasChildNodes()) {
+                socket.emit('move', index);
+            }
         }
     })
 }
 
 makeMove();
-
-// socketBtn.onclick = () => {
-//     socket.emit('sending message', 'Message sent');
-// };
 
 socket.on('new message', function (data) {
     console.log(data);
@@ -73,18 +101,10 @@ socket.on('new message', function (data) {
 socket.on('move made', function (data) {
     console.log(data)
     if (turn === 0) {
-        getTicTacToe[data.index].innerHTML = `
-        <div class="x-symbol">
-            <div class="left"></div>
-            <div class="right"></div>
-        </div>`;
+        getTicTacToe[data.index].innerHTML = playerOneTemplate;
         moves[data.index] = 'X';
     } else {
-        getTicTacToe[data.index].innerHTML = `
-        <svg class="circle-symbol" width="50px" height="50px">
-        <circle class="path" stroke="#F2EBD3" stroke-width="6" stroke-miterlimit="10" cx="25" cy="25" r="22"
-            stroke="#F2EBD3" fill="transparent" />
-        </svg>`;
+        getTicTacToe[data.index].innerHTML = playerTwoTemplate;
         moves[data.index] = 'O';
     }
     console.log(moves);

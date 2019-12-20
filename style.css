@@ -29,9 +29,14 @@ p {
     flex-flow: column;
     background-color: #14bdac;
 }
+#game-container {
+    position: relative;
+}
 #tic-tac-toe-field {
     border-collapse: collapse;
     font-size: 40px;
+    transition: transform 1s;
+    transform: scale(1);
 }
 #tic-tac-toe-field tr td:not(:last-child) {
     border-right: 6px solid #0DA192;
@@ -126,4 +131,33 @@ p {
     to {
         stroke-dashoffset: 0;
     }
+}
+
+/* #line-0-1-2 {
+    position: absolute;
+    top: 45px;
+    width: 0;
+    background: #545454;
+    transition: width .2s;
+    height: 6px;
+    transition: width .2s;
+} */
+
+#message {
+    position: absolute;
+    font-size: 40px;
+    font-weight: 600;
+    color: #545454;
+}
+
+#winner {
+    text-align: center;
+    text-transform: uppercase;
+}
+#winner .circle-symbol {
+    position: initial;
+    top: none;
+    left: none;
+    -webkit-transform: none;
+    transform: none;
 }
