@@ -1,21 +1,6 @@
 const ticTacToeField = document.getElementById('tic-tac-toe-field');
 const message = document.getElementById('message');
-class TicTacToe {
-    moves = [null, null, null, null, null, null, null, null, null];
-    turn = 0;
-    static generateTicTacToe() {
-        const tbody = document.createElement('tbody');
-        for (let i = 0; i < 3; i++) {
-            const tr = document.createElement('tr');
-            for (let j = 0; j < 3; j++) {
-                const td = document.createElement('td');
-                tr.appendChild(td);
-            }
-            tbody.appendChild(tr);
-        }
-        return tbody;
-    }
-}
+
 let moves = [null, null, null, null, null, null, null, null, null];
 
 function generateTicTacToe() {
