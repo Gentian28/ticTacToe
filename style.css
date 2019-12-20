@@ -61,6 +61,11 @@ p {
     left: 50%;
 }
 .x-symbol .left {
+    -webkit-transform: translate(-50%, -50%) rotate(-45deg);
+    -webkit-animation-name: height;
+    -webkit-animation-duration: .15s;
+    -webkit-animation-timing-function: ease-in;
+    -webkit-animation-fill-mode: forwards;
     transform: translate(-50%, -50%) rotate(-45deg);
     animation-name: height;
     animation-duration: .15s;
@@ -69,6 +74,12 @@ p {
     /* animation: name duration timing-function delay iteration-count direction fill-mode; */
 }
 .x-symbol .right {
+    -webkit-transform: translate(-50%, -50%) rotate(45deg);
+    -webkit-animation-name: height;
+    -webkit-animation-duration: .15s;
+    -webkit-animation-delay: .1s;
+    -webkit-animation-timing-function: ease-in;
+    -webkit-animation-fill-mode: forwards;
     transform: translate(-50%, -50%) rotate(45deg);
     animation-name: height;
     animation-duration: .15s;
@@ -89,14 +100,25 @@ p {
     position: absolute;
     top: 50%;
     left: 50%;
+    -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 }
 .path {
     stroke-dasharray: 1000;
     stroke-dashoffset: 1000;
+    -webkit-animation: dash 2s linear alternate forwards;
     animation: dash 2s linear alternate forwards;
 }
-  
+
+@-webkit-keyframes dash {
+    from {
+        stroke-dashoffset: 1000;
+    }
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
 @keyframes dash {
     from {
         stroke-dashoffset: 1000;
