@@ -47,7 +47,8 @@ const checkWinner = (turn) => {
     }
 }
 
-var socket = io.connect('https://tictactoews.herokuapp.com:4001');
+// var socket = io.connect('http://localhost:4001/');
+var socket = io.connect('https://tictactoews.herokuapp.com:443/');
 
 const makeMove = () => {
     getTicTacToe.forEach((cell, index) => {
