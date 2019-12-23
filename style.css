@@ -20,7 +20,13 @@ h1, h2, h3, h4, h5, h6 {
 p {
     margin: 0;
 }
-
+#draw-template {
+    display: flex;
+    justify-content: space-evenly;
+}
+#draw-template .x-symbol {
+    margin: 0;
+}
 #main {
     height: 100vh;
     display: flex;
@@ -150,11 +156,11 @@ p {
     color: #545454;
 }
 
-#winner {
+#result {
     text-align: center;
     text-transform: uppercase;
 }
-#winner .circle-symbol {
+#result .circle-symbol {
     position: initial;
     top: none;
     left: none;
