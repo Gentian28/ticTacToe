@@ -62,17 +62,28 @@ socket.on('reset', function (data) {
     console.log(ticTacToe)
 });
 
-socket.on('connected players', function (data) {
-    connectedPlayers.innerHTML = data;
-});
+// socket.on('connected players', function (data) {
+//     connectedPlayers.innerHTML = data;
+// });
 
-socket.on('player disconnected', function (data) {
-    connectedPlayers.innerHTML = data;
-});
+// socket.on('player disconnected', function (data) {
+//     connectedPlayers.innerHTML = data;
+// });
 
-const url = window.location;
-console.log('href ' + url.href);
-console.log('host ' + url.host);      // developer.mozilla.org:8080
-console.log('hostmane ' + url.hostname);  // developer.mozilla.org
-console.log('port ' + url.port);      // 8080
-console.log('pathname ' + url.pathname);  // /en-US/search
+// const url = window.location;
+// console.log('href ' + url.href);
+// console.log('host ' + url.host);      // developer.mozilla.org:8080
+// console.log('hostmane ' + url.hostname);  // developer.mozilla.org
+// console.log('port ' + url.port);      // 8080
+// console.log('pathname ' + url.pathname);  // /en-US/search
+// console.log('search: ' + url.search);
+
+// const regEx = /\?room=/;
+// console.log(regEx.test("?room="));
+// console.log(history.state)
+// createRoom.onclick = (event) => {
+//     // event.preventDefault();
+//     // url.assign(url.href + '?room=qwerty')
+//     window.history.pushState("object or string", "Page Title", url.href + "newURL");
+//     console.log(url.pathname)
+// }
