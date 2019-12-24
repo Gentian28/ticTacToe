@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Games list</title>
+
+</head>
+
+<body>
+    <main>
+        <button id="createGame">
+            Create new game
+        </button>
+        <ul id="rooms">
+            <li>game 1</li>
+            <li>game 2</li>
+            <li>game 3</li>
+            <li>game 4</li>
+            <li>game 5</li>
+        </ul>
+    </main>
+
+    <script>
+        function uuidv4() {
+            return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c =>
+                (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+            );
+        }
+
+        createGame.onclick = () => {
+            const newGame = document.createElement('li');
+            const newContent = document.createTextNode("Game generated");
+            newGame.setAttribute('id', uuidv4());
+            newGame.appendChild(newContent);
+            rooms.appendChild(newGame);
+        }
+    </script>
+</body>
+
+</html>

@@ -35,6 +35,9 @@ p {
     flex-flow: column;
     background-color: #14bdac;
 }
+#game {
+    display: none;
+}
 #game-container {
     position: relative;
 }

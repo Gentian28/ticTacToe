@@ -1,4 +1,7 @@
 export class TicTacToe {
+    constructor(gameId) {
+        this.gameId = gameId;
+    }
     moves = [null, null, null, null, null, null, null, null, null];
     turn = 0;
 
@@ -13,6 +16,10 @@ export class TicTacToe {
             tbody.appendChild(tr);
         }
         return tbody;
+    }
+
+    newGame() {
+        ticTacToeField.appendChild(this.generateTicTacToe());
     }
 
     reset() {

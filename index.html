@@ -14,17 +14,26 @@
 
 <body>
     <main id="main">
-        <!-- <div id="rooms">
-            <a id="createRoom">createRoom</a>
-        </div>
-        <div id="connectedPlayers"></div> -->
-        <section id="game-container">
-            <table id="ticTacToeField"></table>
+        <div id="connectedPlayers"></div>
 
-            <!-- <div class="line" id="line-0-1-2"></div> -->
+        <section id="rooms">
+            <button id="createGame">
+                Create new game
+            </button>
+            <ul id="roomsList">
+            </ul>
         </section>
-        <div id="message"></div>
-        <button id="reset">reset</button>
+
+        <section id="game">
+            <section>Game ID: <span id="gameIdContainer"></span></section>
+            <section id="game-container">
+                <table id="ticTacToeField"></table>
+
+                <!-- <div class="line" id="line-0-1-2"></div> -->
+            </section>
+            <div id="message"></div>
+            <button id="reset">reset</button>
+        </section>
     </main>
 </body>
 
