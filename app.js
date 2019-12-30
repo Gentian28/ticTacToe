@@ -48,25 +48,35 @@ socket.on('player disconnected', function (data) {
 let gId = '';
 let ticTacToe;
 let getTicTacToe;
+let currPlayer;
 
 const makeMove = () => {
     getTicTacToe.forEach((cell, index) => {
         cell.onclick = () => {
             if (!cell.hasChildNodes()) {
                 // send gameId and move cell address
-                socket.emit('move', { index, gameId: gId });
+                if (ticTacToe.turn === currPlayer) {
+                    socket.emit('move', { index, gameId: gId });
+                } else {
+                    console.log('You cant play')
+                }
             }
         }
     })
 }
 
 socket.on('room joined', data => {
+    console.log(data);
     if (data.gameId === gId) {
-        // console.log(data)
         onlinePlayers.innerHTML = `Online players: ${data.players.length}`;
         if (data.players.length >= 2) {
             // create new instance of ticTacToe with gameId
-            ticTacToe = new TicTacToe(gId);
+            ticTacToe = new TicTacToe(gId, [data.players[0], data.players[1]]);
+            if (localStorage.getItem('uuid') === data.players[0]) {
+                currPlayer = 0;
+            } else {
+                currPlayer = 1;
+            }
             ticTacToe.newGame();
             getTicTacToe = document.querySelectorAll('#ticTacToeField td');
 
@@ -93,9 +103,6 @@ roomsList.onclick = (event) => {
     const currentGame = document.getElementsByClassName(gameId);
     currentGame[0].style.display = 'block';
     gameIdContainer.innerHTML = gameId;
-
-
-
 }
 
 exitGame.onclick = () => {
@@ -150,5 +157,5 @@ socket.on('room exited', game => {
 })
 
 socket.on('disconnected socket', socketId => {
-    console.log(socketId)
+    // console.log(socketId);
 })

@@ -1,8 +1,9 @@
 import { ResultTemplate } from './resultTemplate.js';
 
 export class TicTacToe {
-    constructor(gameId) {
+    constructor(gameId, players) {
         this.gameId = gameId;
+        this.players = players;
     }
     resultTemplate = new ResultTemplate();
 
