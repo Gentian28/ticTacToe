@@ -1,3 +1,11 @@
+/* variables */
+:root {
+    --color-main: #d65a31;
+    --color-secondary: #eeeeee;
+    --color-dark: #404040;
+    --color-secondary-dark: #393e46;
+}
+/* global */
 * {
     box-sizing: border-box;
     outline: none;
@@ -20,38 +28,98 @@ h1, h2, h3, h4, h5, h6 {
 p {
     margin: 0;
 }
+tr {
+    border-bottom: none;
+}
+/* app */
+#app {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-flow: column;
+    background-color: var(--color-dark);
+    padding: 50px 15px;
+}
+/* header */
+#header {
+    text-align: center;
+}
+#onlinePlayers {
+    color: var(--color-main);
+}
+#connectedPlayers {
+    color: var(--color-secondary);
+    font-size: 52px;
+}
+/* main */
+#main {
+    text-align: center;
+    margin: 30px 0;
+}
+/* rooms */
+#rooms {
+    color: var(--color-secondary-dark);
+}
+#createRoom {
+    background-color: var(--color-main);
+    margin-bottom: 15px;
+}
+#roomsList button {
+    border: none;
+    width: 100%;
+}
+#roomsList button:hover {
+    cursor: pointer;
+}
+#roomsList button:disabled {
+    cursor: not-allowed;
+}
+/* game */
+#gameIdentifier {
+    color: var(--color-secondary);
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+#roomOnlinePlayers {
+    color: var(--color-secondary);
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+#restartGame {
+    background-color: var(--color-main);
+}
+#exitGame {
+    background-color: var(--color-main);
+    margin-top: 15px;
+}
 #draw-template {
     display: flex;
     justify-content: space-evenly;
+    align-items: center;
 }
 #draw-template .x-symbol {
     margin: 0;
 }
-#main {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-flow: column;
-    background-color: #14bdac;
-}
+
 #game {
     display: none;
+    position: relative;
 }
 #game-container {
     position: relative;
 }
 #ticTacToeField {
-    border-collapse: collapse;
+    max-width: 320px;
+    margin: 15px auto;
     font-size: 40px;
     transition: transform 1s;
     transform: scale(1);
 }
 #ticTacToeField tr td:not(:last-child) {
-    border-right: 6px solid #0DA192;
+    border-right: 4px solid var(--color-secondary);
 }
 #ticTacToeField tr:not(:last-child) td {
-    border-bottom: 6px solid #0DA192;
+    border-bottom: 4px solid var(--color-secondary);
 }
 #ticTacToeField td {
     text-align: center;
@@ -68,7 +136,7 @@ p {
 }
 .x-symbol > * {
     width: 6px;
-    background: #545454;
+    background: #f1d6ab;
     border-radius: 50px;
     position: absolute;
     top: 50%;
@@ -165,6 +233,7 @@ p {
 #result {
     text-align: center;
     text-transform: uppercase;
+    color: var(--color-secondary);
 }
 #result .circle-symbol {
     position: initial;
@@ -177,7 +246,7 @@ p {
     display: none;
 }
 
-#restartGame {
+/* #restartGame {
     background: #ffffff;
     border: 1px solid #ffffff;
     color: #14bdac;
@@ -187,4 +256,4 @@ p {
     border-radius: 3px;
     box-shadow: 0 1px 6px 0 rgba(32, 33, 36, .28);
     cursor: pointer;
-}
+} */

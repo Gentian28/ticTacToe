@@ -7,36 +7,53 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>tic-tac-toe</title>
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600" rel="stylesheet">
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
     <script defer src="app.js" type="module"></script>
 </head>
 
-<body>
-    <main id="main">
+<body id="app">
+    <!-- header -->
+    <header id="header">
+        <h2 id="onlinePlayers">Online players</h2>
         <div id="connectedPlayers"></div>
+    </header>
 
+    <!-- main -->
+    <main id="main">
+
+        <!-- rooms -->
         <section id="rooms">
-            <button id="createRoom">
+            <button id="createRoom" class="waves-effect waves-light btn">
                 Create new game
             </button>
-            <ul id="roomsList">
+            <ul id="roomsList" class="collection with-header">
             </ul>
         </section>
 
+        <!-- game -->
         <section id="game">
-            <section>Game ID: <span id="gameIdContainer"></span></section>
-            <div id="onlinePlayers"></div>
-            <button id="exitGame">Exit game</button>
+            <section id="gameIdentifier">Game ID: <span id="gameIdContainer"></span></section>
+            <div id="roomOnlinePlayers"></div>
             <section id="game-container">
                 <table id="ticTacToeField"></table>
-
                 <!-- <div class="line" id="line-0-1-2"></div> -->
             </section>
+            <button id="exitGame" class="waves-effect waves-light btn">Exit game</button>
             <div id="message"></div>
             <button id="reset">reset</button>
         </section>
     </main>
+
+    <!-- footer -->
+    <footer id="footer"></footer>
 </body>
 
 </html>
