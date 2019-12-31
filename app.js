@@ -2,8 +2,8 @@ import { TicTacToe } from './js/game.js';
 import { ResultTemplate } from './js/resultTemplate.js';
 import * as helpers from './js/helpers.js';
 
-const socket = io.connect('http://localhost:4001/');
-// var socket = io.connect('https://tictactoews.herokuapp.com:443/');
+// const socket = io.connect('http://localhost:4001/');
+var socket = io.connect('https://tictactoews.herokuapp.com:443/');
 
 const resultTemplate = new ResultTemplate();
 let gamesList = [];
