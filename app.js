@@ -36,7 +36,7 @@ socket.on('games', games => {
         newGameButton.setAttribute('class', 'collection-item')
         newGameButton.setAttribute('id', game.gameId);
         if (game.players.length >= 2) {
-            newGame.setAttribute('disabled', true)
+            newGameButton.setAttribute('disabled', true)
         }
         newGameListElement.appendChild(newGameButton);
         newGameButton.appendChild(newContent);
