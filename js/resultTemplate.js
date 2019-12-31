@@ -31,7 +31,7 @@ export class ResultTemplate {
         <div id="result">
             ${playerTemplate}
             <div>${result}!</div>
-            <button type="button" id="restartGame">Start new game</button>
+            <button type="button" id="restartGame" class="waves-effect waves-light btn">Start new game</button>
         </div>`;
         return template;
     }
