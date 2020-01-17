@@ -15,12 +15,28 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
     <link rel="stylesheet" href="style.css">
+    <script defer src="https://requirejs.org/docs/release/2.3.5/minified/require.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
-    <script defer src="app.js" type="module"></script>
+    <script defer src="dist/bundle.js"></script>
 </head>
 
 <body id="app">
     <!-- header -->
+    <div id="loading">
+        <div class="preloader-wrapper big active">
+            <div class="spinner-layer spinner-red-only">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="gap-patch">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
     <header id="header">
         <h2 id="onlinePlayers">Online players</h2>
         <div id="connectedPlayers"></div>

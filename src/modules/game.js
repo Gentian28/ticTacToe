@@ -4,11 +4,10 @@ export class TicTacToe {
     constructor(gameId, players) {
         this.gameId = gameId;
         this.players = players;
+        this.resultTemplate = new ResultTemplate();
+        this.moves = [null, null, null, null, null, null, null, null, null];
+        this.turn = 0;
     }
-    resultTemplate = new ResultTemplate();
-
-    moves = [null, null, null, null, null, null, null, null, null];
-    turn = 0;
 
     generateTicTacToe() {
         const tbody = document.createElement('tbody');
