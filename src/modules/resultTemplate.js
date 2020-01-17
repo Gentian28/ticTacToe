@@ -1,19 +1,20 @@
 export class ResultTemplate {
-    playerOneTemplate = `
+    constructor() {
+        this.playerOneTemplate = `
         <div class="x-symbol">
             <div class="left"></div>
             <div class="right"></div>
         </div>
-    `;
+        `;
 
-    playerTwoTemplate = `
+        this.playerTwoTemplate = `
         <svg class="circle-symbol" width="50px" height="50px">
             <circle class="path" stroke="#F2EBD3" stroke-width="6" stroke-miterlimit="10" cx="25" cy="25" r="22"
                 stroke="#F2EBD3" fill="transparent" />
         </svg>
-    `;
+        `;
 
-    drawTemplate = `
+        this.drawTemplate = `
         <div id="draw-template">
             <div class="x-symbol">
                 <div class="left"></div>
@@ -24,7 +25,8 @@ export class ResultTemplate {
                     stroke="#F2EBD3" fill="transparent" />
             </svg>
         </div>
-    `;
+        `;
+    }
 
     renderResult(playerTemplate, result) {
         const template = `

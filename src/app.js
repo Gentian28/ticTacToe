@@ -1,10 +1,22 @@
-import { TicTacToe } from './js/game.js';
-import { ResultTemplate } from './js/resultTemplate.js';
-import * as helpers from './js/helpers.js';
+import { TicTacToe } from './modules/game.js';
+import { ResultTemplate } from './modules/resultTemplate.js';
+import * as helpers from './modules/helpers.js';
 
 // const socket = io.connect('http://localhost:4001/');
-var socket = io.connect('https://tictactoews.herokuapp.com:443/');
-
+const socket = io.connect('https://tictactoews.herokuapp.com:443/');
+// loading.style.display = 'block';
+socket.on('connect', () => {
+    loading.style.display = 'none';
+    console.log('connected')
+})
+// setTimeout(() => {
+//     console.log(socket.connected)
+// }, 2000);
+// if (socket) {
+//     console.log('ok');
+// } else {
+//     console.log('not ok')
+// }
 const resultTemplate = new ResultTemplate();
 let gamesList = [];
 
