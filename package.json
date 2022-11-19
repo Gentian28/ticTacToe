@@ -18,6 +18,6 @@
   "homepage": "https://github.com/Gentian28/ticTacToe#readme",
   "devDependencies": {
     "webpack": "^4.41.5",
-    "webpack-cli": "^3.3.10"
+    "webpack-cli": "^3.3.12"
   }
 }
